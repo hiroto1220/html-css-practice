@@ -1,26 +1,67 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 画像の src を格納した配列
     const imageSources = [
-        "./img/item1.jpg",
-        "./img/item2.jpg",
-        "./img/item3.jpg",
-        "./img/item4.jpg",
-        "./img/item5.jpg",
-        "./img/item6.jpg",
+        {src:"./img/item10.jpg", itemName:"イス", itemNumber:10,link:"./item.html"},
+        {src:"./img/item1.jpg", itemName:"辻野かなみ", itemNumber:1},
+        {src:"./img/item2.jpg", itemName:"杏ジュリア", itemNumber:2},
+        {src:"./img/item3.jpg", itemName:"坂井仁香", itemNumber:3},
+        {src:"./img/item4.jpg", itemName:"小泉遥香", itemNumber:4},
+        {src:"./img/item5.jpg", itemName:"菅田あき", itemNumber:5},
+        {src:"./img/item6.jpg", itemName:"吉川ひより", itemNumber:6},
+        {src:"./img/item20.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item7.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item8.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item9.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item11.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item12.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item13.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item14.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item15.jpg", itemName:"パブりん", itemNumber:7},
+        {src:"./img/item16.jpg", itemName:"パブりん", itemNumber:7},
     ];
 
     const container = document.getElementById("image-container");
 
-    imageSources.forEach(src => {
+    const currentURL = window.location.href;
+
+    // 表示する要素の数を決定
+    let numberOfItemsToShow;
+    if (currentURL.includes("index.html")) {
+        numberOfItemsToShow = 8; 
+    }else {
+        numberOfItemsToShow = imageSources.length; 
+    }
+
+    // 要素を追加
+    for (let i = 0; i < numberOfItemsToShow; i++) {
+        const src = imageSources[i];
         const div = document.createElement("div");
         div.className = "image-wrapper"; 
 
         const img = document.createElement("img");
-        img.src = src;
+        img.src = src.src;
         img.className = "image"; 
 
-        div.appendChild(img);
+        const itemName = document.createElement("p");
+        itemName.textContent = src.itemName;
+        itemName.className = "item-name";
 
+        const itemNumber = document.createElement("p");
+        itemNumber.textContent = src.itemNumber; 
+        itemNumber.className = "item-number";
+
+        const link = document.createElement("a");
+        if (src.link) {
+            link.href = src.link;
+        } else {
+            link.href = "#"; 
+        }
+        link.className="link"
+
+        link.appendChild(img);
+        link.appendChild(itemName);
+        link.appendChild(itemNumber);
+
+        div.appendChild(link);
         container.appendChild(div);
-    });
+    }
 });
