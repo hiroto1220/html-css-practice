@@ -1,0 +1,21 @@
+@media all and (max-width:900px){
+
+    #image-container{
+        grid-template-columns: repeat(2,1fr);
+        grid-auto-rows: 1fr;
+        gap: 40px 20px;
+    }
+
+    footer{
+        display: block;
+    }
+    
+    footer a{
+        margin-right: 20px;
+    }
+
+    footer div{
+        display: inline;
+        width: 100%;
+    }
+}
