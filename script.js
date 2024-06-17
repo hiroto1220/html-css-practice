@@ -1,12 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const imageSources = [
         {src:"./img/item10.jpg", itemName:"イス", itemNumber:10,link:"./item.html"},
-        {src:"./img/item1.jpg", itemName:"辻野かなみ", itemNumber:1},
-        {src:"./img/item2.jpg", itemName:"杏ジュリア", itemNumber:2},
-        {src:"./img/item3.jpg", itemName:"坂井仁香", itemNumber:3},
-        {src:"./img/item4.jpg", itemName:"小泉遥香", itemNumber:4},
-        {src:"./img/item5.jpg", itemName:"菅田あき", itemNumber:5},
-        {src:"./img/item6.jpg", itemName:"吉川ひより", itemNumber:6},
         {src:"./img/item20.jpg", itemName:"パブりん", itemNumber:7},
         {src:"./img/item7.jpg", itemName:"パブりん", itemNumber:7},
         {src:"./img/item8.jpg", itemName:"パブりん", itemNumber:7},
@@ -50,11 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
         itemNumber.className = "item-number";
 
         const link = document.createElement("a");
-        if (src.link) {
-            link.href = src.link;
-        } else {
-            link.href = "#"; 
-        }
+        link.href = `./item${i+1}.html`
         link.className="link"
 
         link.appendChild(img);
@@ -64,4 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
         div.appendChild(link);
         container.appendChild(div);
     }
+});
+
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
 });
